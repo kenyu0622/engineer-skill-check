@@ -1,6 +1,6 @@
 <div class="row">
   <span class="label">社員番号</span>
-  <span><%= employee.number %></span>
+  <span><%= sprintf("%06d", employee.number) %></span>
 </div>
 
 <div class="row">
@@ -9,6 +9,16 @@
 </div>
 
 <div class="row">
+  <span class="label">入社年月日</span>
+  <span><%= employee.date_of_joining.strftime("%Y年%m月%d日") %></span>
+</div>
+
+<div class="row">
   <span class="label">部署</span>
   <span><%= employee.department.name %></span>
+</div>
+
+<div class="row">
+  <span class="label">オフィス</span>
+  <span><%= employee.office.name %></span>
 </div>
