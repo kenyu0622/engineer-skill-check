@@ -56,6 +56,11 @@
       <%= f.check_box :employee_info_manage_auth, :as => :boolean %>
     </div>
 
+    <div class="form_group">
+      <%= f.label :news_posting_auth, class: 'checkbox_label' %>
+      <%= f.check_box :news_posting_auth, :as => :boolean %>
+    </div>
+
     <%= f.submit '保存' %>
   <% end %>
 </div>

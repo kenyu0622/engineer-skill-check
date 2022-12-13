@@ -33,5 +33,6 @@ ja:
         department_id: 部署
         office_id: オフィス
         employee_info_manage_auth: 社員情報管理権限
+        news_posting_auth: お知らせ投稿権限
       profile:
         profile: プロフィール
