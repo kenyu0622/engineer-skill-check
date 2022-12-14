@@ -36,3 +36,6 @@ ja:
         news_posting_auth: お知らせ投稿権限
       profile:
         profile: プロフィール
+      article:
+        title: タイトル
+        content: コンテンツ

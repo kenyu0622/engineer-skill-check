@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   resources :employees do
     resources :profiles
+    resources :articles, only: %i[new create update edit]
   end
+
+  resources :articles, only: %i[index show destroy]
 end
