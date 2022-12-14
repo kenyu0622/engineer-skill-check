@@ -1,14 +1,14 @@
 version: "3.9"
 services:
-  webpacker:
-    build: .
-    volumes:
-      - .:/news_and_employee_introduction
-    command: "./bin/webpack-dev-server"
-    environment:
-      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
-    ports:
-      - "3035:3035"
+#  webpacker:
+#    build: .
+#    volumes:
+#      - .:/news_and_employee_introduction
+#    command: "./bin/webpack-dev-server"
+#    environment:
+#      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+#    ports:
+#      - "3035:3035"
   web:
     build: .
     command: "bundle exec rails s -b '0.0.0.0' -p 3000"
