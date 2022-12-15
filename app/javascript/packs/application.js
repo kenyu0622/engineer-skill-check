@@ -7,7 +7,12 @@ import Rails from "@rails/ujs"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import '../stylesheets/application.scss';
+
 import 'jquery'
 
 Rails.start()
 ActiveStorage.start()
+
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';

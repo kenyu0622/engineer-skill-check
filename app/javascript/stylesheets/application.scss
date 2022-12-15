@@ -1,0 +1,101 @@
+@import '~uikit/dist/css/uikit';
+
+@import 'common';
+@import 'dashboard';
+@import "employees";
+@import "profiles";
+@import "sessions";
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+table {
+  border-collapse:  collapse;
+}
+
+tr {
+  border: solid 1px;
+}
+
+.container {
+  height: 100%;
+  padding: 0 20px 0 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.row-center {
+  text-align: center;
+}
+
+#menu {
+  width: auto;
+  border: 1px solid;
+  font-size: 24px;
+  display: flex;
+}
+
+#menu ul {
+  padding-left: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+#menu li {
+  margin: 0 30px 0 30px;
+  float: left;
+}
+
+#dropdown_menu {
+  display: none;
+}
+
+#dropdown_menu ul {
+  padding-left: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+#dropdown_menu li {
+  margin: 0 30px 0 30px;
+  float: left;
+}
+
+#dropdown_menu.is-open {
+  display: flex;
+  margin: 0;
+  width: auto;
+  font-size: 24px;
+}
+
+.dropdown_items {
+  border: 1px solid;
+}
+
+.left_menu, .right_menu {
+  display: inline-block;
+}
+
+.left_menu {
+  margin-right: auto;
+}
+
+.right_menu {
+  margin-left: auto;
+}
+
+.dropdown__btn {
+  font-size: 24px;
+  background: none;
+  border: 0;
+}
