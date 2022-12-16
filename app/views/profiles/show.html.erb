@@ -1,10 +1,10 @@
 <div class="profile_space">
-  <p class="employee_index"><%= link_to '一覧に戻る', employees_path, class: 'btn' %></p>
+  <p class="employee_index"><%= link_to '一覧に戻る', employees_path, class: 'uk-button uk-button-default' %></p>
 
   <%= render partial: 'employee_info', locals: { employee: @employee } %>
 
-  <div class="row">
-    <span class="label">プロフィール</span>
-    <span class="profile_value"><%= @profile.profile %></span>
+  <div class="uk-card uk-card-default uk-card-body">
+    <h3 class="uk-card-title">プロフィール</h3>
+    <div><%= @profile.profile %></div>
   </div>
 </div>

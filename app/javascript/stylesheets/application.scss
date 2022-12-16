@@ -1,10 +1,6 @@
 @import '~uikit/dist/css/uikit';
 
 @import 'common';
-@import 'dashboard';
-@import "employees";
-@import "profiles";
-@import "sessions";
 
 body {
   margin: 0;
@@ -17,12 +13,20 @@ a {
   text-decoration: none;
 }
 
-table {
-  border-collapse:  collapse;
+#main-content {
+  padding-top: 50px;
+  padding-bottom: 120px;
+  min-height: 800px;
 }
 
-tr {
-  border: solid 1px;
+.uk-alert-close {
+  top: auto;
+}
+
+.uk-table {
+  th, td {
+    vertical-align: middle;
+  }
 }
 
 .container {

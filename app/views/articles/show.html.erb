@@ -1,12 +1,10 @@
 <div class="profile_space">
-  <p class="employee_index"><%= link_to '一覧に戻る', articles_path, class: 'btn' %></p>
+  <p class="employee_index"><%= link_to '一覧に戻る', articles_path, class: 'uk-button uk-button-default' %></p>
 
-  <div class="row">
-    <span class="label">タイトル</span>
-    <span><%= @article.title %></span>
-  </div>
-
-  <div class="row">
-    <span><%= @article.content %></span>
-  </div>
+  <dl class="uk-description-list uk-description-list-divider">
+    <dt class="label">タイトル</dt>
+    <dd><%= @article.title %></dd>
+    <dt class="label">コンテンツ</dt>
+    <dd><%= @article.content %></dd>
+  </dl>
 </div>

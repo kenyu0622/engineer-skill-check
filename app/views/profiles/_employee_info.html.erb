@@ -1,24 +1,12 @@
-<div class="row">
-  <span class="label">社員番号</span>
-  <span><%= sprintf("%06d", employee.number) %></span>
-</div>
-
-<div class="row">
-  <span class="label">氏名</span>
-  <span><%= "#{employee.last_name} #{employee.first_name}" %></span>
-</div>
-
-<div class="row">
-  <span class="label">入社年月日</span>
-  <span><%= employee.date_of_joining.strftime("%Y年%m月%d日") %></span>
-</div>
-
-<div class="row">
-  <span class="label">部署</span>
-  <span><%= employee.department.name %></span>
-</div>
-
-<div class="row">
-  <span class="label">オフィス</span>
-  <span><%= employee.office.name %></span>
-</div>
+<dl class="uk-description-list uk-description-list-divider">
+  <dt class="label">社員番号</dt>
+  <dd><%= sprintf("%06d", employee.number) %></dd>
+  <dt class="label">氏名</dt>
+  <dd><%= "#{employee.last_name} #{employee.first_name}" %></dd>
+  <dt class="label">入社年月日</dt>
+  <dd><%= employee.date_of_joining.strftime("%Y年%m月%d日") %></dd>
+  <dt class="label">部署</dt>
+  <dd><%= employee.department.name %></dd>
+  <dt class="label">オフィス</dt>
+  <dd><%= employee.office.name %></dd>
+</dl>

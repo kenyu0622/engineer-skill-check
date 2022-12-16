@@ -1,5 +1,5 @@
 <div class="profile_space">
-  <p class="employee_index"><%= link_to '一覧に戻る', employees_path, class: 'btn' %></p>
+  <p class="employee_index"><%= link_to '一覧に戻る', employees_path, class: 'uk-button uk-button-default' %></p>
 
   <%= render partial: 'employee_info', locals: { employee: @employee } %>
 
@@ -7,7 +7,7 @@
     <span class="label">プロフィール</span>
     <span class="profile_value">
       <% if current_user == @employee %>
-        <p><%= link_to 'プロフィールを作成', new_employee_profile_path(@employee) %></p>
+        <p><%= link_to 'プロフィールを作成', new_employee_profile_path(@employee), class: 'uk-button uk-button-default' %></p>
       <% else %>
         （プロフィールがありません）
       <% end %>

@@ -7,60 +7,65 @@
     </ul>
   <% end %>
 
-  <%= form_with model: employee, local: true do |f| %>
-    <div class="form_group">
+  <%= form_with model: employee, local: true, class: "uk-form" do |f| %>
+    <div class="uk-margin">
       <%= f.label :number %>
-      <%= f.text_field :number %>
+      <%= f.text_field :number, class: "uk-input" %>
     </div>
 
-    <div class="form_group">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+    <div class="uk-margin">
+      <div class="uk-grid">
+        <div class="uk-width-1-2">
+          <%= f.label :last_name %>
+          <%= f.text_field :last_name, class: "uk-input" %>
+        </div>
+        <div class="uk-width-1-2">
+          <%= f.label :first_name %>
+          <%= f.text_field :first_name, class: "uk-input" %>
+        </div>
+      </div>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin">
       <%= f.label :account %>
-      <%= f.text_field :account %>
+      <%= f.text_field :account, class: "uk-input" %>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin">
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: "uk-input" %>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin">
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: "uk-input" %>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin uk-width-1-2">
       <%= f.label :date_of_joining %>
-      <%= f.date_field :date_of_joining %>
+      <%= f.date_field :date_of_joining, class: "uk-input" %>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin uk-width-1-2">
       <%= f.label :department_id %>
-      <%= f.collection_select(:department_id, @departments, :id, :name)%>
+      <%= f.collection_select(:department_id, @departments, :id, :name, {}, class: "uk-select") %>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin uk-width-1-2">
       <%= f.label :office_id %>
-      <%= f.collection_select(:office_id, @offices, :id, :name)%>
+      <%= f.collection_select(:office_id, @offices, :id, :name, {}, class: "uk-select")%>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin">
       <%= f.label :employee_info_manage_auth, class: 'checkbox_label' %>
-      <%= f.check_box :employee_info_manage_auth, :as => :boolean %>
+      <%= f.check_box :employee_info_manage_auth, :as => :boolean, class: "uk-checkbox" %>
     </div>
 
-    <div class="form_group">
+    <div class="uk-margin">
       <%= f.label :news_posting_auth, class: 'checkbox_label' %>
-      <%= f.check_box :news_posting_auth, :as => :boolean %>
+      <%= f.check_box :news_posting_auth, :as => :boolean, class: "uk-checkbox" %>
     </div>
 
-    <%= f.submit '保存' %>
+    <%= f.submit '保存', class: "uk-button uk-button-default" %>
   <% end %>
 </div>

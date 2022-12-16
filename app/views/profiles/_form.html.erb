@@ -8,10 +8,10 @@
 
 <%= render partial: 'employee_info', locals: { employee: @employee } %>
 
-<%= form_with model: [employee, profile], local: true do |f| %>
-  <div class="form_group">
+<%= form_with model: [employee, profile], local: true, class: "uk-form" do |f| %>
+  <div class="uk-margin">
     <%= f.label :profile, class: 'label' %>
-    <%= f.text_area :profile %>
+    <%= f.text_area :profile, class: "uk-textarea" %>
   </div>
-  <%= f.submit '保存' %>
+  <%= f.submit '保存', class: "uk-button uk-button-default" %>
 <% end %>
