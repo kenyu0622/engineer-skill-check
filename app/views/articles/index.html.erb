@@ -2,7 +2,7 @@
   <% if current_user.news_posting_auth %>
     <p class="new_employee"><%= link_to '新規追加', new_employee_article_path(current_user), class: 'uk-button uk-button-default' %></p>
   <% end %>
-
+  <div class="uk-text-right"> <%= page_entries_info @articles %> </div>
   <div class="uk-overflow-container">
     <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
       <thead>
@@ -29,5 +29,8 @@
       <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="uk-margin">
+    <%= paginate @articles %>
   </div>
 </div>

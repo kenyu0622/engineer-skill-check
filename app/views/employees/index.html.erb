@@ -2,7 +2,7 @@
   <% if current_user.employee_info_manage_auth %>
     <p class="new_employee"><%= link_to '新規追加', new_employee_path, class: 'uk-button uk-button-default' %></p>
   <% end %>
-
+  <div class="uk-text-right"> <%= page_entries_info @employees %> </div>
   <div class="uk-overflow-container">
     <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
       <thead>
@@ -35,5 +35,8 @@
       <% end %>
       </tbody>
     </table>
+  </div>
+  <div class="uk-margin">
+    <%= paginate @employees %>
   </div>
 </div>

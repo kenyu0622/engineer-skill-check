@@ -3,7 +3,7 @@ class EmployeesController < ApplicationController
   before_action :set_form_option, only: %i(new create edit update)
 
   def index
-    @employees = Employee.active.order("#{sort_column} #{sort_direction}")
+    @employees = Employee.active.order("#{sort_column} #{sort_direction}").page(params[:page])
   end
 
   def new
