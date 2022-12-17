@@ -1,7 +1,5 @@
 @import '~uikit/dist/css/uikit';
 
-@import 'common';
-
 body {
   margin: 0;
   padding: 0;
@@ -11,6 +9,15 @@ body {
 
 a {
   text-decoration: none;
+}
+
+th, td {
+  vertical-align: middle !important;
+  white-space: nowrap;
+}
+
+section {
+  padding: 15px 0;
 }
 
 #main-content {
@@ -26,6 +33,7 @@ a {
 .uk-table {
   th, td {
     vertical-align: middle;
+    text-transform:none;
   }
 }
 
@@ -103,3 +111,5 @@ a {
   background: none;
   border: 0;
 }
+
+@import 'common';

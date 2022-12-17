@@ -1,15 +1,26 @@
-<div class="employee_index">
-  <% if current_user.employee_info_manage_auth %>
-    <p class="new_employee"><%= link_to '新規追加', new_employee_path, class: 'uk-button uk-button-default' %></p>
-  <% end %>
-  <div class="uk-text-right"> <%= page_entries_info @employees %> </div>
+<div>
+  <div class="uk-flex uk-flex-between uk-margin">
+    <% if current_user.employee_info_manage_auth %>
+      <div><%= link_to '新規追加', new_employee_path, class: 'uk-button uk-button-default' %></div>
+      <div>
+        <%= button_tag 'CSVダウンロード', type: :button, class: "uk-button uk-width-1 uk-button-default", onclick: "showConfigUploadCSV()" %>
+      </div>
+      <div>
+        <%= link_to 'CSVアップロード', upload_employees_path, class: "uk-button uk-width-1 uk-button-default" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="uk-text-right uk-margin"> <%= page_entries_info @employees %> </div>
   <div class="uk-overflow-container">
     <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
       <thead>
         <tr>
           <th><%= sort_order "number", "社員番号" %></th>
           <th class="name">氏名</th>
+          <th>メールアドレス</th>
+          <th>入社年月日</th>
           <th class="department_th"><%= sort_order "department_id", "所属" %></th>
+          <th>オフィス</th>
           <th></th>
         </tr>
       </thead>
@@ -26,7 +37,10 @@
             <th><%= link_to employee.number, employee_profiles_path(employee) %></th>
           <% end %>
           <th class="name"><%= "#{employee.last_name} #{employee.first_name}" %></th>
+          <th><%= employee.email %></th>
+          <th><%= employee.date_of_joining %></th>
           <th><%= employee.department.name %></th>
+          <th><%= employee.office.name %></th>
           <% if current_user.employee_info_manage_auth %>
             <th class="btn_th"><%= link_to '編集', edit_employee_path(employee), class: 'uk-button uk-button-default uk-button-small' %></th>
             <th class="btn_th"><%= link_to '削除', employee, method: :delete, data: { confirm: "社員「#{employee.first_name} #{employee.last_name}」を削除します。よろしいですか？" }, class: 'uk-button uk-button-default uk-button-small' %></th>
@@ -40,3 +54,82 @@
     <%= paginate @employees %>
   </div>
 </div>
+
+<div id="upload-csv-modal" class="uk-modal">
+  <div class="uk-modal-dialog uk-modal-dialog-large">
+    <button type="button" class="uk-modal-close uk-close">×</button>
+    <div class="uk-modal-header">
+      <h2>社員CSVダウンロード</h2>
+    </div>
+    <div class="uk-modal-body">
+      <%= form_with url: export_employees_path, class: "uk-form" do %>
+        <div class="uk-form-row">
+          <h3>出力項目</h3>
+          <div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'number', true, class: 'uk-checkbox' %>
+              <label>社員番号</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'last_name', true, class: 'uk-checkbox' %>
+              <label>氏名（姓）</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'first_name', true, class: 'uk-checkbox' %>
+              <label>氏名（名）</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'account', true, class: 'uk-checkbox' %>
+              <label>アカウント</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'password', true, class: 'uk-checkbox' %>
+              <label>パスワード</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'email', true, class: 'uk-checkbox' %>
+              <label>メールアドレス</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'date_of_joining', true, class: 'uk-checkbox' %>
+              <label>入社年月日</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'department_id', true, class: 'uk-checkbox' %>
+              <label>部署</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'office_id', true, class: 'uk-checkbox' %>
+              <label>オフィス</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'employee_info_manage_auth', true, class: 'uk-checkbox' %>
+              <label>社員情報管理権限</label>
+            </div>
+            <div class="uk-form-controls">
+              <%= check_box_tag "employee_attributes[]", 'news_posting_auth', true, class: 'uk-checkbox' %>
+              <label>お知らせ投稿権限</label>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+    <div class="uk-modal-footer">
+      <button type="button" class="uk-button back-button uk-modal-close">キャンセル</button>
+      <button type="button" id="modal-submit-button" class="uk-button submit-button">ダウンロード</button>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    function showConfigUploadCSV(){
+        modal = UIkit.modal("#upload-csv-modal", {bgclose: false, modal: false})
+        modal.show()
+
+        $modal = $("#upload-csv-modal")
+        $modal.find("#modal-submit-button").on("click", function(e){
+            $modal.find("form").submit()
+        })
+    }
+</script>

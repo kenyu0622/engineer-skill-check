@@ -1,0 +1,67 @@
+<legend>社員CSVアップロード</legend>
+<section>
+  <%= form_with url: upload_employees_path, method: :post, multipart: true, class: "uk-form" do %>
+    <div class="uk-margin">
+      <%= file_field_tag :file_path, accept: ".csv" %>
+    </div>
+    <div class="uk-margin">
+      <%= button_tag "取り込み開始", class: "uk-button uk-button-default", type: :submit %>
+    </div>
+  <% end %>
+</section>
+
+<% if @employees.present? %>
+  <section>
+    <div class="uk-grid">
+      <div class="uk-width-1">
+        <div class="uk-overflow-auto">
+          <table class="uk-table uk-table-hover uk-table-striped uk-table-condensed">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th>削除日</th>
+              <th>社員番号</th>
+              <th>氏名（姓）</th>
+              <th>氏名（名）</th>
+              <th>アカウント</th>
+              <th>メールアドレス</th>
+              <th>入社年月日</th>
+              <th>部署</th>
+              <th>オフィス</th>
+              <th>社員情報管理権限</th>
+              <th>お知らせ投稿権限</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <% @employees.each do |employee| %>
+              <tr>
+                <td><%= employee.id %></td>
+                <td><%= employee.deleted_at&.strftime("%Y/%m/%d") %></td>
+                <td><%= employee.number %></td>
+                <td><%= employee.last_name %></td>
+                <td><%= employee.first_name %></td>
+                <td><%= employee.account %></td>
+                <td><%= employee.email %></td>
+                <td><%= employee.date_of_joining %></td>
+                <td><%= employee.department.name %></td>
+                <td><%= employee.office.name %></td>
+                <td><%= employee.employee_info_manage_auth ? 'あり' : 'なし' %></td>
+                <td><%= employee.news_posting_auth ? 'あり' : 'なし' %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<section>
+  <div class="uk-grid">
+    <div class="uk-width-1">
+      <%= link_to '戻る', employees_path, class: "uk-button uk-button-default" %>
+    </div>
+  </div>
+</section>
