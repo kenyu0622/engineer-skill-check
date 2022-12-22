@@ -15,4 +15,4 @@ Employee.find_or_create_by(id: 1, department_id: Department.find_by(name: '総�
                            office_id: Office.find_by(name: '東京').id,
                            number: '1', last_name: '山田', first_name: '太郎', account: 'yamada',
                            password: 'hogehoge', email: 'yamada@example.co.jp', date_of_joining: '1991/4/1',
-                           employee_info_manage_auth: true)
+                           employee_info_manage_auth: true, news_posting_auth: true)
